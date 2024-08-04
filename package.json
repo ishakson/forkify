@@ -1,0 +1,19 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "recipe application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ishakson/forkify.git"
+  },
+  "author": "ishakson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ishakson/forkify/issues"
+  },
+  "homepage": "https://github.com/ishakson/forkify#readme"
+}
