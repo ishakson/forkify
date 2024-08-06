@@ -6,9 +6,9 @@ class PaginationView extends View {
   addHandlerClick(handler) {
     this._parentElement.addEventListener("click", function (e) {
       const btn = e.target.closest(".btn--inline");
-      if (!btn) return;
-      const goToPage = +btn.dataset.goto;
-      handler(goToPage);
+      if(!btn) return;
+      const goto = +btn.dataset.goto;
+      handler(goto);
     })
   }
   _generateMarkup() {
@@ -32,7 +32,7 @@ class PaginationView extends View {
 
   _generateMarkupBtn(side, curPage) {
     return `
-        <button class="btn--inline pagination__btn--${side}">
+        <button  data-goto="${side === "next" ? `${curPage + 1}` : `${curPage - 1}`}" class="btn--inline pagination__btn--${side}">
             <span>${
               side === "next" ? `Page ${curPage + 1}` : `Page ${curPage - 1}`
             }</span>
