@@ -1,5 +1,5 @@
 import * as model from "./model.js";
-import { MODAL_CLOSE_SEC } from "./config.js";
+import { API_URL, MODAL_CLOSE_SEC } from "./config.js";
 import recipeView from "./views/recipeView.js";
 import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
@@ -9,12 +9,17 @@ import addRecipeView from "./views/addRecipeView.js"
 import toolsView from "./views/toolsView.js"
 
 
+
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
 if (module.hot) {
   module.hot.accept();
 }
+
+let tools = document.querySelector(".search-results-tools");
+
+
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -39,6 +44,11 @@ const controlSearchResults = async function () {
 
     resultsView.render(model.getSearchResultsPage());
     paginationView.render(model.state.search);
+    if(model.state.search.results.length > 0) {
+      tools.classList.remove("hidden");
+    }else {
+      tools.classList.add("hidden");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -85,7 +95,11 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-
+const controlSortBy = async function (sortBy) {
+  model.sortBy(sortBy);
+  resultsView.render(model.getSearchResultsPage());
+  paginationView.render(model.state.search);
+};
 
 const init = function () {
   bookmarkView.addHandlerRender(controlBookmarks);
@@ -95,6 +109,8 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+
+  toolsView.addHandlerTools(controlSortBy);
 
   
 
