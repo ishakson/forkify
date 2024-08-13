@@ -21,7 +21,11 @@ class PaginationView extends View {
 
     if (curPage > 1) {
       markup += this._generateMarkupBtn("prev", curPage);
+      
     }
+   
+   
+    markup += ` <span class="pagination__pages">${curPage}/${numPages}</span>`;
 
     if (curPage < numPages) {
       markup += this._generateMarkupBtn("next", curPage);

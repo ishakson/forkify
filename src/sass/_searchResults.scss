@@ -2,7 +2,33 @@
   padding: 3rem 0;
   display: flex;
   flex-direction: column;
+
+  &-tools {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: $color-primary;
+    }
+
+    .select {
+      font-size: 1.5rem;
+      font-weight: 500;
+      border: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
 }
+
+
 
 .results {
   list-style: none;
@@ -26,6 +52,13 @@
     &--next {
       float: right;
     }
+  }
+
+  &__pages {
+    margin-left: 4.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: $color-primary;
   }
 }
 

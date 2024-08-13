@@ -5,7 +5,8 @@ import searchView from "./views/searchView.js";
 import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import bookmarkView from "./views/bookmarkView.js";
-import addRecipeView from "./views/addRecipeView.js";
+import addRecipeView from "./views/addRecipeView.js"
+import toolsView from "./views/toolsView.js"
 
 
 import "core-js/stable";
@@ -83,6 +84,9 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderError(err.message);
   }
 };
+
+
+
 const init = function () {
   bookmarkView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
@@ -91,6 +95,7 @@ const init = function () {
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+
   
 
 };
