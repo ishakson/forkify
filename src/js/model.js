@@ -28,10 +28,7 @@ const createRecipeObject = function (data) {
   };
 };
 
-export const sortBy = async function (sortBy) {
-  
-  
-}
+
 export const loadRecipe = async function (id) {
   try {
     const data = await AJAX(`${API_URL}${id}?key=${KEY}`);
@@ -144,3 +141,12 @@ export const uploadRecipe = async function (newRecipe) {
     throw err;
   }
 };
+
+export const sortByDuration = async function () {
+ 
+
+}
+export const sortByIngredients = async function () {
+  
+
+}

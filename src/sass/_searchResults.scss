@@ -38,6 +38,10 @@
 .pagination {
   margin-top: auto;
   padding: 0 3.5rem;
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+  gap: 0.5rem; 
 
   &::after {
     content: '';
@@ -51,6 +55,23 @@
     }
     &--next {
       float: right;
+    }
+    &--page {
+      flex: 0 1 auto; 
+    }
+    &--first,
+    &--last {
+      margin-right: auto; 
+    }
+    &--last {
+      order: 1;  
+    }
+
+    &--active {
+      background-color: #f38e82; 
+  color: white;
+  border-radius: 50%;
+  padding: 0.5rem 0.75rem;
     }
   }
 
@@ -72,4 +93,10 @@
   .twitter-link:visited {
     color: $color-grey-dark-2;
   }
+}
+
+.sort-options {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  font-size: 1rem;
 }

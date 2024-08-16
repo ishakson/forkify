@@ -6,7 +6,8 @@ import resultsView from "./views/resultsView.js";
 import paginationView from "./views/paginationView.js";
 import bookmarkView from "./views/bookmarkView.js";
 import addRecipeView from "./views/addRecipeView.js"
-import toolsView from "./views/toolsView.js"
+import sortView from "./views/sortView.js"
+
 
 
 
@@ -17,7 +18,7 @@ if (module.hot) {
   module.hot.accept();
 }
 
-let tools = document.querySelector(".search-results-tools");
+
 
 
 const controlRecipes = async function () {
@@ -44,11 +45,7 @@ const controlSearchResults = async function () {
 
     resultsView.render(model.getSearchResultsPage());
     paginationView.render(model.state.search);
-    if(model.state.search.results.length > 0) {
-      tools.classList.remove("hidden");
-    }else {
-      tools.classList.add("hidden");
-    }
+   
   } catch (err) {
     console.log(err);
   }
@@ -95,10 +92,13 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
-const controlSortBy = async function (sortBy) {
-  model.sortBy(sortBy);
+const controlSortResults = function (sortType) {
+  if (sortType === 'duration') {
+    model.sortByDuration();
+  } else if (sortType === 'ingredients') {
+    model.sortByIngredients();
+  } 
   resultsView.render(model.getSearchResultsPage());
-  paginationView.render(model.state.search);
 };
 
 const init = function () {
@@ -110,7 +110,8 @@ const init = function () {
   paginationView.addHandlerClick(controlPagination);
   addRecipeView.addHandlerUpload(controlAddRecipe);
 
-  toolsView.addHandlerTools(controlSortBy);
+  sortView.addHandlerSort(controlSortResults);
+
 
   
 
